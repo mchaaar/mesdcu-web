@@ -1,103 +1,143 @@
-import Image from "next/image";
+"use client";
+
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/authContext";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const { loggedIn } = useContext(AuthContext);
+  const [shapeOpacity] = useState(0.3);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  return (
+    <div className="relative isolate bg-white">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+      >
+        <div
+          style={{
+            clipPath:
+              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+            opacity: shapeOpacity,
+          }}
+          className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem]
+                     -translate-x-1/2 rotate-[30deg]
+                     bg-gradient-to-tr from-[#7116CB] to-[#7116CB]
+                     sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+        />
+      </div>
+
+      <div
+        aria-hidden="true"
+        className="absolute bottom-0 left-0 -z-10 transform-gpu overflow-hidden blur-3xl"
+      >
+        <div
+          style={{
+            clipPath:
+              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+            opacity: shapeOpacity,
+          }}
+          className="relative w-[20rem] h-[20rem]
+                     bg-gradient-to-tr from-[#7116CB] to-[#7116CB]"
+        />
+      </div>
+
+      <div
+        aria-hidden="true"
+        className="absolute bottom-[-5rem] left-[-5rem] -z-10 transform-gpu overflow-hidden blur-3xl"
+      >
+        <div
+          style={{
+            clipPath:
+              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+            opacity: shapeOpacity,
+          }}
+          className="relative w-[15rem] h-[15rem]
+                     bg-gradient-to-tr from-[#7116CB] to-[#7116CB]"
+        />
+      </div>
+
+      <div
+        aria-hidden="true"
+        className="absolute top-0 right-0 -z-10 transform-gpu overflow-hidden blur-3xl"
+      >
+        <div
+          style={{
+            clipPath:
+              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+            opacity: shapeOpacity,
+          }}
+          className="relative w-[20rem] h-[20rem]
+                     bg-gradient-to-tr from-[#7116CB] to-[#7116CB]"
+        />
+      </div>
+
+      <div className="px-6 pt-14 lg:px-8">
+        <div className="mx-auto max-w-2xl py-16 sm:py-20 lg:py-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <div className="text-center">
+              <h1 className="text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
+                {loggedIn
+                  ? "Welcome Back!"
+                  : <>
+                      Welcome to Cyna
+                    </>}
+              </h1>
+              <p className="mt-4 text-lg font-medium text-gray-500 sm:text-xl">
+                {loggedIn
+                  ? "You are logged in. Visit your dashboard to manage your content."
+                  : "Please login or register to access your dashboard."}
+              </p>
+              <div className="mt-8 flex items-center justify-center gap-x-6">
+                {loggedIn ? (
+                  <Link
+                    href="/dashboard"
+                    className="rounded-md bg-[#8000FF] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#6F00E6] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[#8000FF]"
+                  >
+                    Go to Dashboard
+                  </Link>
+                ) : (
+                  <>
+                    <Link
+                      href="/login"
+                      className="rounded-md bg-[#8000FF] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#6F00E6] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[#8000FF]"
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      href="/register"
+                      className="text-sm font-semibold text-gray-900"
+                    >
+                      Register <span aria-hidden="true">→</span>
+                    </Link>
+                  </>
+                )}
+              </div>
+            </div>
+          </motion.div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+      >
+        <div
+          style={{
+            clipPath:
+              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+            opacity: shapeOpacity,
+          }}
+          className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem]
+                     -translate-x-1/2 bg-gradient-to-tr from-[#7116CB] to-[#7116CB]
+                     sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+        />
+      </div>
     </div>
   );
 }
